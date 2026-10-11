@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="az"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campus Arena</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#eef1f9;--sf:#fff;--sf2:#f1f4fc;--ln:#dde2f1;--tx:#0b1330;--mu:#5d678a;--az:#2f6bff;--rd:#ff3d5a;--gr:#0fae7c;--gd:#f2a900;--sh:0 14px 32px -16px rgba(20,40,120,.35)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#080d1d;--sf:#0f1730;--sf2:#16204a;--ln:#243058;--tx:#eef2ff;--mu:#93a0cc;--az:#4d83ff;--gr:#22d3a0;--gd:#ffc233;--sh:0 14px 32px -16px #000}}
+:root[data-theme="dark"]{--bg:#080d1d;--sf:#0f1730;--sf2:#16204a;--ln:#243058;--tx:#eef2ff;--mu:#93a0cc;--az:#4d83ff;--gr:#22d3a0;--gd:#ffc233;--sh:0 14px 32px -16px #000}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;min-height:100vh}
+h1,h2,h3{margin:0;font-family:Unbounded,"Arial Black",system-ui,sans-serif;letter-spacing:-.02em}
+h3{font-size:16px;margin-bottom:12px}
+button,input,select{font:inherit;color:var(--tx)}
+button{border:0;cursor:pointer;border-radius:12px;padding:10px 16px;background:var(--az);color:#fff;font-weight:800;transition:transform .15s,filter .15s}
+button:hover{filter:brightness(1.1)}button:active{transform:scale(.97)}
+button:focus-visible,input:focus-visible,select:focus-visible,.gt:focus-visible{outline:3px solid var(--gd);outline-offset:2px}
+button.gh{background:var(--sf);color:var(--tx);border:1px solid var(--ln);margin-bottom:14px}
+input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--ln);background:var(--sf2);margin:5px 0 12px}
+label{font-size:13px;font-weight:600;color:var(--mu)}
+.mu{color:var(--mu);font-size:13px}
+.mk{display:inline-grid;grid-template-columns:1fr 1fr;gap:3px;width:26px;height:26px}
+.mk i{border-radius:4px}.mk i:nth-child(1){background:var(--az)}.mk i:nth-child(2){background:var(--rd)}.mk i:nth-child(3){background:var(--gr)}.mk i:nth-child(4){background:var(--gd)}
+.brand{display:flex;align-items:center;gap:10px;font:700 15px Unbounded,system-ui;padding:6px 8px 16px}
+.auth{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;max-width:1100px;margin:0 auto;padding:36px 18px;align-items:center}
+.auth h1{font-size:clamp(32px,5.6vw,60px);line-height:1.06;margin:18px 0 14px}
+.auth p.lead{font-size:18px;color:var(--mu);max-width:520px;margin:0 0 26px}
+.strip{height:30px;border-radius:8px;background:repeating-conic-gradient(var(--az) 0 25%,transparent 0 50%) 0 0/30px 30px;border:1px solid var(--ln)}
+.form{background:var(--sf);border:1px solid var(--ln);border-radius:26px;padding:26px;box-shadow:var(--sh)}
+.dz{display:flex;gap:10px;align-items:center;padding:14px;border:2px dashed var(--ln);border-radius:14px;cursor:pointer;margin:5px 0 14px;color:var(--mu);font-weight:600;font-size:14px}
+.dz:hover{border-color:var(--az)}
+.err{color:var(--rd);font-size:13px;min-height:18px;margin-bottom:6px}
+.big{width:100%;padding:14px;font-size:16px}
+.shell{display:grid;grid-template-columns:230px 1fr;gap:24px;max-width:1180px;margin:0 auto;padding:18px}
+.side{position:sticky;top:calc(18px + env(safe-area-inset-top,0px));align-self:start;display:flex;flex-direction:column;gap:6px}
+.nv{display:flex;align-items:center;gap:10px;background:none;color:var(--mu);padding:12px;border-radius:14px;text-align:left}
+.nv.on{background:var(--sf);color:var(--tx);box-shadow:var(--sh)}
+.who{display:flex;gap:10px;align-items:center;margin-top:18px;padding:10px;border-top:1px solid var(--ln)}
+.who b{display:block;font-size:14px}
+.av{border-radius:50%;color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
+.hi{font-size:clamp(22px,3.4vw,32px);line-height:1.2;margin-bottom:20px}
+.gg{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:26px}
+.gt{border-radius:24px;padding:18px;min-height:170px;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;border:0;text-align:left;font-weight:600;transition:transform .2s}
+.gt:hover:not(.off){transform:translateY(-4px)}
+.gt.off{cursor:default;filter:saturate(.7)}
+.gt b{font:700 19px Unbounded,system-ui}
+.gt span{font-size:13px;opacity:.9}
+.gt em{position:absolute;top:14px;right:14px;font-style:normal;font-size:12px;font-weight:800;background:rgba(0,0,0,.28);padding:4px 10px;border-radius:99px}
+.gl{position:absolute;top:10px;left:16px;font-size:58px;line-height:1}
+.dom{position:absolute;top:14px;left:18px;width:40px;height:74px;background:#fff;border-radius:8px;transform:rotate(-12deg);display:flex;flex-direction:column}
+.dom i{height:50%;display:block}.dom i:first-child{border-bottom:2px solid #c9ccd8;background:radial-gradient(circle at 50% 50%,#111 4px,transparent 5px)}
+.dom i:last-child{background:radial-gradient(circle at 28% 28%,#111 4px,transparent 5px),radial-gradient(circle at 72% 28%,#111 4px,transparent 5px),radial-gradient(circle at 28% 72%,#111 4px,transparent 5px),radial-gradient(circle at 72% 72%,#111 4px,transparent 5px)}
+.dk{position:absolute;top:16px;left:16px;width:48px;height:48px;border-radius:50%;background:#1a0509;box-shadow:inset 0 0 0 6px #ff6b82,18px 20px 0 -2px #fff}
+.cols{display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
+.sec{background:var(--sf);border:1px solid var(--ln);border-radius:22px;padding:20px}
+.row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--ln)}
+.row:last-child{border:0}.row .g{flex:1;min-width:0}.row b{display:block}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--gr);display:inline-block;margin-right:5px}
+.rk{display:flex;gap:12px;align-items:center;margin:12px 0}
+.rn{font:700 15px Unbounded,system-ui;width:22px;color:var(--mu)}
+.rb{flex:1}.rt{display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px}.rt span{color:var(--mu)}
+.bar{height:10px;border-radius:9px;background:var(--sf2);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--az);border-radius:9px;transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+.mine .bar i{background:var(--gd)}
+.room{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.bd{display:grid;grid-template-columns:repeat(3,minmax(0,96px));justify-content:center;margin:18px 0;border-radius:16px;overflow:hidden;width:max-content;max-width:100%;margin-inline:auto}
+.bd button{aspect-ratio:1;padding:0;border-radius:0;font:700 40px Unbounded,system-ui;color:var(--az);background:var(--sf2)}
+.bd button:nth-child(even){background:var(--ln)}.bd button.o{color:var(--rd)}
+.st{text-align:center;font-weight:800;margin-bottom:12px}
+.badge{font-size:11px;font-weight:800;background:var(--sf2);padding:3px 9px;border-radius:99px;color:var(--mu);margin-left:8px;font-family:Manrope,sans-serif;letter-spacing:0}
+.log{height:300px;overflow-y:auto;padding:4px 2px}
+.bb{max-width:82%;width:fit-content;padding:8px 13px;border-radius:16px 16px 16px 4px;margin:6px 0;font-size:14px;background:var(--sf2)}
+.bb small{display:block;font-weight:800;color:var(--az);font-size:11px}
+.bb.me{margin-left:auto;background:var(--az);color:#fff;border-radius:16px 16px 4px 16px}.bb.me small{display:none}
+.send{display:flex;gap:8px;margin-top:10px}.send input{margin:0}
+.idc{max-width:430px;border-radius:24px;padding:24px;color:#fff;background:linear-gradient(135deg,var(--az),#14237a);box-shadow:var(--sh)}
+.idc h2{font-size:22px;margin:22px 0 4px}.idc p{margin:0;opacity:.9}
+.ok{display:inline-block;margin-top:16px;background:rgba(255,255,255,.2);padding:5px 12px;border-radius:99px;font-size:13px;font-weight:800}
+@media(max-width:860px){
+.auth,.cols,.room{grid-template-columns:1fr}
+.shell{grid-template-columns:1fr;padding:14px 14px 96px}
+.side{position:fixed;left:0;right:0;top:auto;bottom:0;flex-direction:row;justify-content:space-around;background:var(--sf);border-top:1px solid var(--ln);padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));z-index:9;gap:2px}
+.side .brand,.side .who{display:none}.nv{flex-direction:column;gap:2px;font-size:12px;padding:6px 10px}
+}
+.cf{position:fixed;top:-14px;width:9px;height:14px;z-index:99;animation:fall 2.2s linear forwards}@keyframes fall{to{transform:translateY(105vh) rotate(720deg)}}
+.toast{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 18px;border-radius:99px;font-weight:800;z-index:100}
+.rx{display:flex;gap:6px;margin-top:8px}.rx button{background:var(--sf2);padding:4px 10px;font-size:18px}
+.ck{display:grid;grid-template-columns:repeat(8,1fr);width:min(100%,400px);margin:12px auto;border-radius:12px;overflow:hidden}
+.ck button{aspect-ratio:1;padding:0;border-radius:0;display:grid;place-items:center;background:var(--lt,#e9d9b8)}.ck .dk2{background:var(--dk,#7a4e2d)}.ck .sl{outline:3px solid var(--gd);outline-offset:-3px}
+.pc{width:76%;height:76%;border-radius:50%;display:grid;place-items:center;font-style:normal;color:#ffc233;box-shadow:inset 0 -3px 0 rgba(0,0,0,.3)}.pc.w{background:#fff}.pc.b{background:#1a1a1f}
+.mm{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:340px;margin:12px auto}.mm button{aspect-ratio:1;font-size:30px;background:var(--sf2);color:var(--tx);padding:0}.mm button.up{background:var(--ln)}
+.cx{display:grid;grid-template-columns:repeat(8,1fr);width:min(100%,400px);margin:12px auto;border-radius:12px;overflow:hidden}
+.cx button{aspect-ratio:1;padding:0;border-radius:0;display:grid;place-items:center;background:var(--lt,#e9d9b8);font-size:clamp(22px,6vw,38px)}.cx .dk2{background:var(--dk,#7a4e2d)}.cx .sl{outline:3px solid var(--gd);outline-offset:-3px}
+.cp{font-style:normal;line-height:1}.cp.w{color:#fff;text-shadow:0 0 2px #000,0 0 2px #000,0 0 3px #000}.cp.b{color:#111;text-shadow:0 0 1px #fff}
+.dt{display:inline-flex;border:2px solid #111;border-radius:8px;background:#fff;color:#111;font-weight:800;overflow:hidden;margin:2px}.dt b{padding:6px 9px;font-size:16px}.dt b+b{border-left:2px solid #111}.dt.pl{outline:3px solid var(--gd)}
+.dtb{background:none;padding:0;border-radius:8px}.chn{display:flex;flex-wrap:wrap;gap:2px;padding:10px;background:var(--sf2);border-radius:12px;margin:8px 0;min-height:48px;align-items:center}
+.stp{display:none}.stp.on{display:block}.nx{display:flex;gap:8px;justify-content:space-between;align-items:center}.prog{display:flex;gap:6px;margin-bottom:16px}.prog i{flex:1;height:6px;border-radius:9px;background:var(--ln)}.prog i.on{background:var(--az)}
+.how{margin-top:28px;display:grid;gap:14px}.how>div{display:flex;gap:14px;align-items:flex-start}.how b{font:700 16px Unbounded,system-ui;width:36px;height:36px;border-radius:12px;background:var(--az);color:#fff;display:grid;place-items:center;flex:none}.how h4{margin:0;font-size:15px}.how p{margin:2px 0 0}
+.pod{display:flex;align-items:flex-end;justify-content:center;gap:12px;margin:18px 0}.pdm{display:flex;flex-direction:column;align-items:center;gap:4px;width:92px;min-height:var(--h);padding:12px 6px;border-radius:18px 18px 0 0;background:var(--sf);border:1px solid var(--ln);justify-content:flex-end;text-align:center}.pdm:nth-child(2){background:linear-gradient(var(--gd),var(--sf))}
+.br{display:flex;gap:22px;min-width:520px}.br>div{display:flex;flex-direction:column;justify-content:space-around;gap:8px;flex:1}.bn{padding:8px 12px;border-radius:10px;background:var(--sf2);border:1px solid var(--ln);font-weight:700;font-size:14px}
+.ban{height:110px;border-radius:22px}
+@keyframes pin{from{opacity:0;transform:translateY(6px)}}#v>*{animation:pin .25s both}
+:root{--nx:#22e1ff;--pk:#ff3dac}
+:root:not([data-theme="light"]){--bg:#060919;--sf:rgba(16,22,58,.68);--sf2:rgba(36,48,108,.5);--ln:rgba(130,150,255,.22);--tx:#eef1ff;--mu:#98a4d8;--az:#7c5cff;--gr:#2df0b0;--gd:#ffd23d;--sh:0 22px 50px -26px #000}
+:root:not([data-theme="light"]) body{background:radial-gradient(900px 520px at 8% -8%,rgba(124,92,255,.38),transparent 70%),radial-gradient(760px 520px at 100% 100%,rgba(34,225,255,.2),transparent 70%),radial-gradient(500px 400px at 92% 8%,rgba(255,61,172,.14),transparent 70%),var(--bg);background-attachment:fixed}
+:root:not([data-theme="light"]) .auth h1{background:linear-gradient(90deg,#fff,#b9c6ff 45%,var(--nx));-webkit-background-clip:text;background-clip:text;color:transparent}
+*{scrollbar-width:thin;scrollbar-color:var(--ln) transparent}option{background:#101638;color:#eef1ff}
+button:not([class]),button.big{background:linear-gradient(135deg,var(--az),color-mix(in srgb,var(--az) 50%,var(--pk)));box-shadow:0 10px 24px -12px var(--az)}
+button:not([class]):hover,button.big:hover{box-shadow:0 12px 30px -8px var(--az)}
+input:focus,select:focus{border-color:var(--az);box-shadow:0 0 0 3px color-mix(in srgb,var(--az) 30%,transparent);outline:0}
+.brand{text-shadow:0 0 18px var(--az)}.mk{filter:drop-shadow(0 0 8px var(--az))}
+.sec,.form,.pv{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.form{border-color:color-mix(in srgb,var(--az) 55%,transparent);box-shadow:0 0 70px -24px var(--az)}
+.side{backdrop-filter:blur(16px)}
+.nv:hover{color:var(--tx)}.nv.on{background:linear-gradient(90deg,color-mix(in srgb,var(--az) 35%,transparent),transparent);box-shadow:inset 3px 0 0 var(--az);color:var(--tx)}
+.deck{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0}
+.deck span{width:78px;height:96px;display:grid;place-items:center;font-size:38px;border-radius:20px;color:#fff;background:linear-gradient(160deg,color-mix(in srgb,var(--az) 45%,transparent),rgba(34,225,255,.1));border:1px solid var(--ln);box-shadow:0 0 30px -8px var(--az);animation:fl 5s ease-in-out infinite}
+.deck span:nth-child(1){transform:rotate(-6deg)}.deck span:nth-child(2){transform:rotate(4deg);animation-delay:-1.3s}.deck span:nth-child(3){transform:rotate(-3deg);animation-delay:-2.6s}.deck span:nth-child(4){transform:rotate(7deg);animation-delay:-3.9s}
+@keyframes fl{50%{translate:0 -10px}}
+.pv{margin-top:18px;padding:14px;border-radius:20px;background:var(--sf);border:1px solid var(--ln);max-width:470px}.pvh{font-weight:800;font-size:13px;margin-bottom:6px;color:var(--mu)}
+.live{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;background:var(--sf);border:1px solid var(--ln);font-weight:800;font-size:13px;margin-bottom:12px}
+.dot{animation:pl 1.8s infinite}@keyframes pl{0%{box-shadow:0 0 0 0 var(--gr)}70%,100%{box-shadow:0 0 0 7px transparent}}
+.gt{border:1px solid rgba(255,255,255,.28);box-shadow:0 24px 40px -22px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.35)}
+.gt:hover:not(.off){transform:translateY(-6px) scale(1.02);box-shadow:0 28px 50px -16px var(--az),inset 0 1px 0 rgba(255,255,255,.4)}
+.gt::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.25) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s;pointer-events:none}.gt:hover::after{transform:translateX(120%)}
+.gl{font-size:72px;filter:drop-shadow(0 0 14px rgba(255,255,255,.55))}
+.bd,.ck,.cx,.mm{box-shadow:0 0 0 2px var(--ln),0 22px 50px -22px var(--az)}
+.bb{background:var(--sf2);border:1px solid var(--ln)}.bb.me{background:linear-gradient(135deg,var(--az),var(--pk));border:0;color:#fff;box-shadow:0 8px 20px -10px var(--az)}
+.ln{display:flex;gap:8px;align-items:flex-end;margin:6px 0}.ln.me{justify-content:flex-end}.ln .bb{margin:0}.ln .bb.me{margin-left:0}
+.ty{display:inline-flex;gap:4px;padding:4px 2px}.ty i{width:7px;height:7px;border-radius:50%;background:var(--mu);animation:ty 1s infinite}.ty i:nth-child(2){animation-delay:.15s}.ty i:nth-child(3){animation-delay:.3s}@keyframes ty{40%{transform:translateY(-4px);opacity:.4}}
+.log{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--az) 8%,transparent));border-radius:14px;padding:8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.cf{display:none}#v>*{animation:none}.deck span,.dot,.ty i{animation:none}}
+</style></head><body><div id="app"></div>
+<script>
+const U=["BDU","ADA Universiteti","UNEC","ADNSU","Azərbaycan Texniki Universiteti","Bakı Mühəndislik Universiteti","Digər"];
+const M=["Kompüter elmləri","İqtisadiyyat","Hüquq","Tibb","Memarlıq","Beynəlxalq münasibətlər","Digər"];
+const BOTS=[["Aysel","BDU","Hüquq"],["Elvin","ADA Universiteti","Kompüter elmləri"],["Nigar","UNEC","İqtisadiyyat"],["Rauf","BDU","Kompüter elmləri"],["Leyla","UNEC","Kompüter elmləri"],["Tural","ADNSU","Kompüter elmləri"]];
+const SAY=["Salam! 👋","Kim oynayır?","Bu gün imtahan var, stres 😅","Əla gedişdir!","Növbəti oyunda görüşərik","Kim udacaq görək 😄","Hansı fakültədənsən?"];
+const RK=[["BDU",2840],["UNEC",2615],["ADA Universiteti",2390],["ADNSU",1980],["ATU",1720]];
+let me=null,tab="g",cur=null,ids="",chats={},friends=[],pend=[],board=Array(9).fill(""),over=false;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+try{const s=localStorage.getItem("ca_me");if(s)me=JSON.parse(s)}catch(e){}
+const opts=a=>a.map(x=>`<option>${x}</option>`).join("");
+const mk='<span class="mk"><i></i><i></i><i></i><i></i></span>';
+const hue=n=>[...n].reduce((a,c)=>a+c.charCodeAt(0),0)*37%360;
+const av=(n,s=40)=>`<div class="av" style="width:${s}px;height:${s}px;background:hsl(${hue(n)} 65% 48%)">${esc(n[0])}</div>`;
+const groups=()=>[["🏛️",me.uni+" tələbələri",me.uni],["🎓",me.major+" ixtisası",me.major],["⭐",me.uni+" / "+me.major,me.uni+me.major]];
+const cnt=g=>12+BOTS.filter(b=>b[1]==g||b[2]==g||b[1]+b[2]==g).length*9;
+function rank(n){return RK.slice(0,n).map((u,i)=>`<div class="rk ${me&&me.uni.startsWith(u[0])?"mine":""}"><span class="rn">${i+1}</span><div class="rb"><div class="rt"><b>${u[0]}</b><span>${u[1]} xal</span></div><div class="bar"><i data-w="${u[1]/28.4}"></i></div></div></div>`).join("")}
+function anim(){requestAnimationFrame(()=>requestAnimationFrame(()=>document.querySelectorAll(".bar i").forEach(e=>e.style.width=e.dataset.w+"%")))}
+
+function render(){
+  if(!me){$("#app").innerHTML=`<div class="auth"><div><div class="brand" style="padding:0">${mk}Campus Arena</div>
+  <h1>Dərsdən sonra meydan sənindir.</h1><p class="lead">Tələbə biletinlə daxil ol, universitetinin və ixtisasının qruplarına qoşul, domino, şahmat və dama ilə yoldaşlarına meydan oxu.</p>
+  <div class="deck"><span>♞</span><span>🎲</span><span>🏆</span><span>✕○</span></div><div class="pv"><div class="pvh"><i class="dot"></i>Canlı çat: UNEC / Kompüter elmləri</div><div class="bb"><small>Leyla</small>Kim şahmat oynayır? ♟️</div><div class="bb me">Mən! 5 dəqiqəyə otaq açıram 🔥</div><div class="bb"><small>Rauf</small>Qoşuluram, bu dəfə udacağam 😄</div><div class="ty"><i></i><i></i><i></i></div></div><div style="margin-top:26px"><h3>Bu həftənin universitet reytinqi</h3>${rank(4)}</div>${how()}</div>
+  <div class="form"><h3 style="font-size:20px">Arenaya qoşul</h3>
+  <div class="prog"><i class="on"></i><i></i><i></i></div><div class="stp on"><label>Ad və soyad</label><input id="n" placeholder="Məs: Aysel Məmmədova" autocomplete="name"><div class="nx"><span class="mu">Addım 1 / 3</span><button onclick="stp(1)">Davam et</button></div></div><div class="stp">
+  <label>Universitet</label><select id="u" onchange="uniTheme(this.value)">${opts(U)}</select>
+  <label>İxtisas</label><select id="m">${opts(M)}</select>
+  <div class="nx"><button class="gh" style="margin:0" onclick="stp(0)">Geri</button><button onclick="stp(2)">Davam et</button></div></div><div class="stp"><label>Tələbə bileti</label><label class="dz">📎 <span id="fn">Biletin şəklini seç</span><input id="f" type="file" accept="image/*" hidden></label>
+  <div class="err" id="er"></div><div class="nx"><button class="gh" style="margin:0" onclick="stp(1)">Geri</button><button class="big" style="width:auto;flex:1" onclick="reg()">Qeydiyyatdan keç</button></div></div>
+  <p class="mu" style="margin:12px 0 0">Demo: bilet avtomatik təsdiqlənir. Real saytda yoxlama aparılacaq.</p></div></div>`;anim();return}
+  uniTheme(me.uni);const T=[["g","🎮","Oyunlar"],["t","🏆","Reytinq"],["r","👥","Qruplar"],["f","🤝","Dostlar"],["p","🪪","Profil"]];
+  $("#app").innerHTML=`<div class="shell"><aside class="side"><div class="brand">${mk}Campus Arena</div>${T.map(t=>`<button class="nv ${tab==t[0]?"on":""}" onclick="go('${t[0]}')"><span>${t[1]}</span>${t[2]}</button>`).join("")}<div class="who">${av(me.name,38)}<div><b>${esc(me.name.split(" ")[0])}</b><span class="mu" id="xp">Səviyyə ${lv()} / ${xp} XP</span></div></div></aside><main id="v"></main></div>`;
+  view();
+}
+function go(t){tab=t;cur=null;render()}
+function reg(){
+  const n=$("#n").value.trim();if(!n){$("#er").textContent="Adını və soyadını yaz.";return}
+  me={name:n,uni:$("#u").value,major:$("#m").value};
+  try{localStorage.setItem("ca_me",JSON.stringify(me))}catch(e){}
+  render();
+}
+document.addEventListener("change",e=>{if(e.target.id=="f"&&e.target.files[0]){$("#fn").textContent=e.target.files[0].name;const r=new FileReader();r.onload=()=>ids=r.result;r.readAsDataURL(e.target.files[0])}});
+
+function chat(key,title,badge){
+  chats[key]=chats[key]||[];
+  return `<h3>${title}${badge?`<span class="badge">${badge}</span>`:""}</h3><div class="log" id="log"></div><div class="rx">${["👍","😂","🔥","👏","😮"].map(e=>`<button onclick="snd('${key}','${e}')" aria-label="${e}">${e}</button>`).join("")}</div><div class="send"><input id="t" placeholder="Mesaj yaz" aria-label="Mesaj" onkeydown="if(event.key=='Enter')snd('${key}')"><button onclick="snd('${key}')">Göndər</button></div>`;
+}
+function draw(key){const l=$("#log");if(!l)return;l.innerHTML=chats[key].map(m=>`<div class="ln ${m.me?"me":""}">${m.me?"":av(m.n,28)}<div class="bb ${m.me?"me":""}"><small>${esc(m.n)}</small>${esc(m.t)}</div></div>`).join("")+(TY[key]?'<div class="ln"><div class="bb"><div class="ty"><i></i><i></i><i></i></div></div></div>':"");l.scrollTop=1e9}
+function snd(key,x){
+  const i=$("#t"),t=x||i.value.trim();if(!t)return;i.value="";
+  chats[key].push({n:me.name,t,me:1});gain(3,"Söhbətçi");TY[key]=1;draw(key);
+  setTimeout(()=>{let b=BOTS[Math.floor(Math.random()*BOTS.length)];
+    if(key.startsWith("dm:"))b=[key.slice(3)];
+    TY[key]=0;chats[key].push({n:b[0],t:SAY[Math.floor(Math.random()*SAY.length)]});if(cur==key)draw(key)},1400);
+}
+const back='<button class="gh" onclick="cur=null;view()">‹ Geri</button>';
+function view(){
+  const v=$("#v");
+  if(tab=="g"){
+    if(cur){const R={game:["XOX: sən (X) botla (O)",'<div class="bd" id="b"></div>',drawB],dama:["Dama: sən (ağ) botla (qara)",'<div class="ck" id="b"></div>',drawD],mem:["Yaddaş kartları",'<div class="mm" id="b"></div>',drawM],chess:["Şahmat: sən (ağ) botla (qara)",'<div class="cx" id="b"></div>',drawC],dom:["Domino: sən botla",'<div class="dg" id="b"></div>',drawO]}[cur];v.innerHTML=back+`<div class="room"><div class="sec"><h3>${R[0]}</h3><div class="st" id="st">Sənin növbən</div>${R[1]}<div style="text-align:center"><button onclick="openG(cur)">Yenidən başla</button></div></div><div class="sec">${chat(cur,"Açıq çat","Hamı görür")}</div></div>`;R[2]();draw(cur);return}
+    const G=[["Domino","2–4 nəfər","linear-gradient(145deg,#1b38c9,#2f6bff)",'<div class="dom"><i></i><i></i></div>',0,"dom"],["Şahmat","1:1 duel","linear-gradient(145deg,#08604a,#0fae7c)",'<div class="gl">♞</div>',0,"chess"],["Dama","Botla duel","linear-gradient(145deg,#b81a3a,#ff3d5a)",'<div class="dk"></div>',0,"dama"],["XOX","Botla sına","linear-gradient(145deg,#a86c00,#f2a900)",'<div class="gl">✕○</div>',0,"game"],["Yaddaş","Cüt tap","linear-gradient(145deg,#6a2cc9,#a15bff)",'<div class="gl">🧠</div>',0,"mem"]];
+    v.innerHTML=`<div class="live"><i class="dot"></i>128 tələbə onlayn / 14 canlı otaq</div><h2 class="hi">Salam, ${esc(me.name.split(" ")[0])}. Bu gün kimə meydan oxuyursan?</h2>
+    <div class="gg">${G.map(g=>`<button class="gt ${g[4]?"off":""}" style="background:${g[2]}" ${g[4]?"":`onclick="openG('${g[5]}')"`}>${g[3]}<em>${g[4]?"Tezliklə":"Oyna"}</em><b>${g[0]}</b><span>${g[1]}</span></button>`).join("")}</div>
+    <div class="cols"><div class="sec"><h3>Canlı otaqlar</h3>${BOTS.slice(0,4).map(b=>`<div class="row">${av(b[0],40)}<div class="g"><b>${b[0]}</b><span class="mu">${b[1]}</span></div><span class="mu"><i class="dot"></i>XOX</span><button onclick="openG('game')">Qoşul</button></div>`).join("")}</div>
+    <div class="sec"><h3>Universitet reytinqi</h3>${rank(5)}</div></div>`;anim();
+  }
+  if(tab=="r"){
+    if(cur&&cur.startsWith("grp:")){const g=groups()[+cur.slice(4)];v.innerHTML=back+`<div class="sec">${chat(cur,g[0]+" "+esc(g[1]),cnt(g[2])+" üzv")}</div>`;draw(cur);return}
+    v.innerHTML=`<h2 class="hi">Qruplarına avtomatik əlavə olundun</h2><div class="sec">${groups().map((g,i)=>`<div class="row" style="cursor:pointer" onclick="cur='grp:${i}';seed(cur);view()"><span style="font-size:30px">${g[0]}</span><div class="g"><b>${esc(g[1])}</b><span class="mu">${cnt(g[2])} üzv</span></div><button>Aç</button></div>`).join("")}</div>`;
+  }
+  if(tab=="f"){
+    if(cur&&cur.startsWith("pf:")){v.innerHTML=back+prof(cur.slice(3));return}
+    if(cur&&cur.startsWith("dm:")){v.innerHTML=back+`<div class="sec">${chat(cur,"Söhbət: "+esc(cur.slice(3)))}</div>`;draw(cur);return}
+    const o=BOTS.slice().sort((a,b)=>(b[1]==me.uni)-(a[1]==me.uni));
+    v.innerHTML=`<h2 class="hi">Dostlar</h2><div class="cols"><div class="sec"><h3>Dostlarım</h3>${friends.length?friends.map(n=>`<div class="row">${av(n,40)}<div class="g"><b>${n}</b><span class="mu"><i class="dot"></i>onlayn</span></div><button onclick="cur='dm:${n}';chats[cur]=chats[cur]||[];view()">Mesaj</button></div>`).join(""):'<p class="mu">Hələ dostun yoxdur. Sağdan tələbələrə dostluq at.</p>'}</div>
+    <div class="sec"><h3>Tələbələr</h3>${o.map(b=>`<div class="row">${av(b[0],40)}<div class="g" style="cursor:pointer" onclick="cur='pf:${b[0]}';view()"><b>${b[0]}</b><span class="mu">${b[1]}, ${b[2]}</span></div>${friends.includes(b[0])?'<span class="mu">Dostsunuz</span>':pend.includes(b[0])?'<span class="mu">Göndərildi</span>':`<button onclick="addF('${b[0]}')">Dostluq at</button>`}</div>`).join("")}</div></div>`;
+  }
+  if(tab=="t"){v.innerHTML=lead()+brk();return}
+  if(tab=="p")setTimeout(anim,0),v.innerHTML=`<h2 class="hi">Profil</h2><div class="idc"><div class="brand" style="padding:0;color:#fff">${mk}Tələbə kartı</div><h2>${esc(me.name)}</h2><p>${esc(me.uni)}</p><p>${esc(me.major)}</p><span class="ok">✓ Təsdiqlənib (demo)</span></div><div class="sec" style="margin-top:16px;max-width:430px"><h3>Səviyyə ${lv()}</h3><div class="bar"><i data-w="${xp%100}"></i></div><p class="mu">${xp} XP. Hər 100 XP yeni səviyyədir.</p><h3>Nailiyyətlər</h3>${ach.length?ach.map(a=>`<span class="badge">🏅 ${a}</span>`).join(" "):'<p class="mu">Hələ nailiyyət yoxdur. Oyna və yaz.</p>'}<p><label>Taxta teması<select onchange="boardTheme(this.value)">${Object.keys(BT).map(k=>`<option ${k==bt?"selected":""}>${k}</option>`).join("")}</select></label></p><p><button onclick="season()">🌸 Novruz</button> <button onclick="theme()">🌓 Rejim</button> <button onclick="sfx=!sfx;this.textContent=sfx?'🔊 Səs açıq':'🔇 Səs bağlı'">🔊 Səs açıq</button></p></div>${ids?`<img src="${ids}" alt="Yüklənmiş tələbə bileti" style="max-width:430px;width:100%;border-radius:16px;margin-top:16px;border:1px solid var(--ln)">`:""}<p><button class="gh" style="margin-top:18px" onclick="try{localStorage.removeItem('ca_me')}catch(e){};me=null;render()">Çıxış</button></p>`;
+}
+function seed(k){if(!chats[k])chats[k]=[{n:"Rauf",t:"Salam hamıya! 👋"},{n:"Leyla",t:"Kim hazırlaşır imtahana?"}]}
+function addF(n){pend.push(n);view();setTimeout(()=>{pend=pend.filter(x=>x!=n);friends.push(n);gain(10,"Dost tapdın");if(tab=="f"&&!cur)view()},1500)}
+function drawB(){const b=$("#b");if(!b)return;b.innerHTML=board.map((c,i)=>`<button class="${c=="O"?"o":""}" aria-label="Xana ${i+1}" onclick="mv(${i})">${c}</button>`).join("")}
+const L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+const win=p=>L.some(l=>l.every(i=>board[i]==p));
+function end(){const s=$("#st");if(win("X")){s.textContent="🎉 Sən qazandın!";won()}else if(win("O"))s.textContent="Bot qazandı 😅";else if(board.every(Boolean))s.textContent="Bərabərlik";else return false;return over=true}
+function mv(i){
+  if(over||board[i])return;board[i]="X";beep(600);gain(2);drawB();if(end())return;
+  const f=p=>{for(const l of L){const e=l.filter(j=>!board[j]),m=l.filter(j=>board[j]==p);if(m.length==2&&e.length==1)return e[0]}};
+  let k=f("O");if(k==null)k=f("X");
+  if(k==null){const e=board.map((c,j)=>c?-1:j).filter(j=>j>=0);k=board[4]==""?4:e[Math.floor(Math.random()*e.length)]}
+  board[k]="O";drawB();end();
+}
+function reset(){board=Array(9).fill("");over=false;drawB();$("#st").textContent="Sənin növbən"}
+let xp=+(()=>{try{return localStorage.getItem("ca_xp")}catch(e){}})()||0,ach=[],sfx=1,AC;
+const lv=()=>Math.floor(xp/100)+1;
+function toast(t){const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
+function gain(n,a){xp+=n;try{localStorage.setItem("ca_xp",xp)}catch(e){}if(a&&!ach.includes(a)){ach.push(a);toast("🏅 Nailiyyət: "+a)}const x=$("#xp");if(x)x.textContent="Səviyyə "+lv()+" / "+xp+" XP"}
+function beep(f=520,d=.12){if(!sfx)return;try{AC=AC||new AudioContext();const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;g.gain.value=.05;o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
+function boom(){for(let i=0;i<48;i++){const e=document.createElement("i");e.className="cf";e.style.cssText=`left:${Math.random()*100}vw;background:hsl(${Math.random()*360} 90% 55%);animation-delay:${Math.random()*.4}s`;document.body.appendChild(e);setTimeout(()=>e.remove(),2800)}}
+function won(){gain(50,"İlk qələbə");beep(880,.3);boom()}
+function theme(){const r=document.documentElement,d=r.dataset.theme||"dark";r.dataset.theme=d=="dark"?"light":"dark"}
+function openG(k){cur=k;if(k=="game"){board=Array(9).fill("");over=false}if(k=="dama")newD();if(k=="mem")newM();if(k=="chess")newC();if(k=="dom")newDo();view()}
+let D=[],sel=null,dt="w",dover=false;
+function newD(){D=Array(64).fill("");for(let r=0;r<8;r++)for(let c=0;c<8;c++)if((r+c)%2){if(r<3)D[r*8+c]="b";if(r>4)D[r*8+c]="w"}sel=null;dt="w";dover=false}
+function mvs(i){const p=D[i],r=i>>3,c=i&7,o=[],ds=p=="w"?[-1]:p=="b"?[1]:[-1,1];for(const dr of ds)for(const dc of[-1,1]){const R=r+dr,C=c+dc;if(R<0||R>7||C<0||C>7)continue;const q=D[R*8+C];if(!q)o.push([R*8+C]);else if(q.toLowerCase()!=p.toLowerCase()){const R2=R+dr,C2=C+dc;if(R2>=0&&R2<8&&C2>=0&&C2<8&&!D[R2*8+C2])o.push([R2*8+C2,R*8+C])}}return o}
+function doM(i,m){D[m[0]]=D[i];D[i]="";if(m[1]!=null)D[m[1]]="";const r=m[0]>>3;if(D[m[0]]=="w"&&r==0)D[m[0]]="W";if(D[m[0]]=="b"&&r==7)D[m[0]]="B";return m[1]!=null}
+function all(s){const a=[];D.forEach((p,i)=>{if(p&&p.toLowerCase()==s)mvs(i).forEach(m=>a.push([i,m]))});return a}
+function fin(w){dover=true;const s=$("#st");if(s)s.textContent=w?"🎉 Sən qazandın!":"Bot qazandı 😅";if(w)won()}
+function bot(){if(dover)return;const a=all("b");if(!a.length){fin(1);return}const k=a.filter(x=>x[1][1]!=null),l=k.length?k:a,x=l[Math.floor(Math.random()*l.length)];doM(x[0],x[1]);beep(400);dt="w";if(!all("w").length)fin(0);drawD()}
+function dc(i){if(dover||dt!="w")return;if(D[i]&&D[i].toLowerCase()=="w")sel=i;else if(sel!=null){const m=mvs(sel).find(x=>x[0]==i);if(m){const cap=doM(sel,m);sel=null;beep(500);gain(cap?4:2);if(!all("b").length)fin(1);else{dt="b";setTimeout(bot,500)}}}drawD()}
+function drawD(){const b=$("#b");if(!b||!b.classList.contains("ck"))return;b.innerHTML=D.map((p,i)=>`<button class="${((i>>3)+(i&7))%2?"dk2":"lt"} ${sel==i?"sl":""}" onclick="dc(${i})" aria-label="Xana ${i+1}">${p?`<i class="pc ${p.toLowerCase()}">${p<"a"?"♛":""}</i>`:""}</button>`).join("")}
+let MC=[],mf=[],mm=0,lock=false;
+function newM(){const e=["🎓","📚","⚽","🎮","♟️","🧠","🏆","🚀"];MC=[...e,...e].sort(()=>Math.random()-.5).map(x=>({x,f:0,d:0}));mf=[];mm=0;lock=false}
+function drawM(){const b=$("#b");if(!b||!b.classList.contains("mm"))return;b.innerHTML=MC.map((c,i)=>`<button class="${c.f||c.d?"up":""}" onclick="mc(${i})" aria-label="Kart ${i+1}">${c.f||c.d?c.x:"?"}</button>`).join("");const s=$("#st");if(s)s.textContent="Gediş: "+mm}
+function mc(i){if(lock||MC[i].f||MC[i].d)return;MC[i].f=1;mf.push(i);beep(500+i*20,.08);drawM();if(mf.length==2){mm++;lock=true;const[a,b]=mf;setTimeout(()=>{if(MC[a].x==MC[b].x){MC[a].d=MC[b].d=1;gain(5)}MC[a].f=MC[b].f=0;mf=[];lock=false;drawM();if(MC.every(c=>c.d)){const s=$("#st");if(s)s.textContent="🎉 "+mm+" gedişdə tamamladın!";won()}},700)}}
+let C=[],cs=null,ct="w",cover=false;const PV={p:1,n:3,b:3,r:5,q:9,k:99};
+function newC(){C=("rnbqkbnr"+"pppppppp"+" ".repeat(32)+"PPPPPPPP"+"RNBQKBNR").split("").map(x=>x==" "?"":x);cs=null;ct="w";cover=false}
+function cm(i){const p=C[i],w=p<"a",t=p.toLowerCase(),r=i>>3,c=i&7,o=[];const own=x=>C[x]&&(C[x]<"a")==w,foe=x=>C[x]&&(C[x]<"a")!=w;
+ const add=(R,K)=>{if(R<0||R>7||K<0||K>7)return 0;const x=R*8+K;if(own(x))return 0;o.push(x);return foe(x)?0:1};
+ if(t=="p"){const d=w?-1:1,s=w?6:1;if(!C[(r+d)*8+c]){o.push((r+d)*8+c);if(r==s&&!C[(r+2*d)*8+c])o.push((r+2*d)*8+c)}for(const e of[-1,1]){const K=c+e;if(K>=0&&K<8&&foe((r+d)*8+K))o.push((r+d)*8+K)}}
+ else if(t=="n")for(const[a,b]of[[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]])add(r+a,c+b);
+ else if(t=="k"){for(let a=-1;a<2;a++)for(let b=-1;b<2;b++)if(a||b)add(r+a,c+b)}
+ else{const V=t=="b"?[[1,1],[1,-1],[-1,1],[-1,-1]]:t=="r"?[[1,0],[-1,0],[0,1],[0,-1]]:[[1,1],[1,-1],[-1,1],[-1,-1],[1,0],[-1,0],[0,1],[0,-1]];for(const[a,b]of V){let k=1;while(add(r+a*k,c+b*k))k++}}
+ return o}
+function cmove(a,b){const cap=C[b];C[b]=C[a];C[a]="";if(C[b]=="P"&&b>>3==0)C[b]="Q";if(C[b]=="p"&&b>>3==7)C[b]="q";return cap}
+function cfin(w){cover=true;const s=$("#st");if(s)s.textContent=w?"🎉 Şahı tutdun, sən qazandın!":"Bot şahını tutdu 😅";if(w)won()}
+function cbot(){if(cover)return;let best=-1,bm=[];C.forEach((p,i)=>{if(p&&p>"Z")cm(i).forEach(x=>{const v=(C[x]?PV[C[x].toLowerCase()]:0)+Math.random()*.9;if(v>best){best=v;bm=[i,x]}})});if(!bm.length)return cfin(1);const cap=cmove(bm[0],bm[1]);beep(400);ct="w";if(cap=="K")cfin(0);drawC()}
+function cc(i){if(cover||ct!="w")return;if(C[i]&&C[i]<"a")cs=i;else if(cs!=null&&cm(cs).includes(i)){const cap=cmove(cs,i);cs=null;beep(500);gain(cap?4:2);if(cap=="k")cfin(1);else{ct="b";setTimeout(cbot,600)}}drawC()}
+function drawC(){const b=$("#b");if(!b||!b.classList.contains("cx"))return;const G={k:"♚",q:"♛",r:"♜",b:"♝",n:"♞",p:"♟"};b.innerHTML=C.map((p,i)=>`<button class="${((i>>3)+(i&7))%2?"dk2":"lt"} ${cs==i?"sl":""}" onclick="cc(${i})" aria-label="Xana ${i+1}">${p?`<i class="cp ${p<"a"?"w":"b"}">${G[p.toLowerCase()]}</i>`:""}</button>`).join("")}
+let P=[],B=[],Y=[],DC=[],dtn="p",dov=false,pas=0;
+function newDo(){const t=[];for(let a=0;a<7;a++)for(let b=a;b<7;b++)t.push([a,b]);t.sort(()=>Math.random()-.5);P=t.splice(0,7);B=t.splice(0,7);Y=t;DC=[];dtn="p";dov=false;pas=0}
+const ends=()=>DC.length?[DC[0][0],DC[DC.length-1][1]]:null,sum=h=>h.reduce((s,t)=>s+t[0]+t[1],0);
+function canP(t){const e=ends();return !e||t.includes(e[0])||t.includes(e[1])}
+function place(t){if(!DC.length){DC.push(t);return}const e=ends();if(t.includes(e[1]))DC.push(t[0]==e[1]?t:[t[1],t[0]]);else DC.unshift(t[1]==e[0]?t:[t[1],t[0]])}
+function dend(){dov=true;const s=$("#st");const w=!P.length?1:!B.length?0:sum(P)<=sum(B)?1:0;if(s)s.textContent=w?"🎉 Sən qazandın!":"Bot qazandı 😅";if(w)won();drawO()}
+function dbot(){if(dov)return;let m=B.filter(canP);while(!m.length&&Y.length){B.push(Y.pop());m=B.filter(canP)}if(m.length){m.sort((a,b)=>b[0]+b[1]-a[0]-a[1]);const t=m[0];B.splice(B.indexOf(t),1);place(t);pas=0;beep(400);if(!B.length)return dend()}else{pas++;if(pas>=2)return dend()}dtn="p";drawO()}
+function dp(i){if(dov||dtn!="p")return;const t=P[i];if(!canP(t))return;P.splice(i,1);place(t);pas=0;beep(550);gain(2);if(!P.length)return dend();dtn="b";drawO();setTimeout(dbot,800)}
+function ddraw(){if(dov||dtn!="p"||P.some(canP))return;if(Y.length)P.push(Y.pop());else{pas++;if(pas>=2)return dend();dtn="b";setTimeout(dbot,600)}drawO()}
+const tl=(t,c)=>`<span class="dt ${c||""}"><b>${t[0]}</b><b>${t[1]}</b></span>`;
+function drawO(){const b=$("#b");if(!b||!b.classList.contains("dg"))return;const my=dtn=="p"&&!dov;b.innerHTML=`<div class="mu">Botun daşı: ${B.length}. Qalan daş: ${Y.length}</div><div class="chn">${DC.length?DC.map(t=>tl(t)).join(""):'<span class="mu">İlk daşı sən qoy</span>'}</div><div class="mu">Sənin daşların</div><div>${P.map((t,i)=>`<button class="dtb" onclick="dp(${i})" ${canP(t)&&my?"":"disabled"} aria-label="Daş ${t[0]} ${t[1]}">${tl(t,canP(t)&&my?"pl":"")}</button>`).join("")}</div><p><button onclick="ddraw()" ${my?"":"disabled"}>Daş çək / Pas</button></p>`;const s=$("#st");if(s&&!dov)s.textContent=my?"Sənin növbən":"Botun növbəsi"}
+let rf=1,ssn=0,bt="Ağac";const TY={};
+const UT={"BDU":"#2f6bff","ADA Universiteti":"#e0245e","UNEC":"#0fae7c","ADNSU":"#f2a900","Azərbaycan Texniki Universiteti":"#7c3aed","Bakı Mühəndislik Universiteti":"#0891b2"};
+function uniTheme(u){if(!ssn)document.documentElement.style.setProperty("--az",UT[u]||"#2f6bff")}
+function season(){ssn=!ssn;const s=document.documentElement.style;if(ssn){s.setProperty("--az","#1e9e5a");s.setProperty("--gd","#ffcc33");toast("🌸 Novruz teması")}else{s.removeProperty("--gd");uniTheme(me.uni)}}
+const BT={"Ağac":["#e9d9b8","#7a4e2d"],"Mərmər":["#eceff4","#8a93a8"],"Neon":["#151a3d","#2b3a9c"]};
+function boardTheme(n){bt=n;const s=document.documentElement.style;s.setProperty("--lt",BT[n][0]);s.setProperty("--dk",BT[n][1])}
+function stp(n){if(n>0&&!$("#n").value.trim()){toast("Adını və soyadını yaz");return}document.querySelectorAll(".stp").forEach((e,i)=>e.classList.toggle("on",i==n));document.querySelectorAll(".prog i").forEach((e,i)=>e.classList.toggle("on",i<=n))}
+const how=()=>`<div class="how">${[["1","Tələbə biletini yüklə","Universitetin və ixtisasın qeyd olunur."],["2","Qruplara qoşul","Universitet və ixtisas qruplarına avtomatik düşürsən."],["3","Oyna və yüksəl","Domino, şahmat, dama və yaddaş oyunları ilə reytinqdə irəlilə."]].map(s=>`<div><b>${s[0]}</b><div><h4>${s[1]}</h4><p class="mu">${s[2]}</p></div></div>`).join("")}</div>`;
+function lead(){const f=[["Həftə",.2],["Ay",.6],["Ümumi",1]];const L=[["Aysel",1840],["Elvin",1720],["Rauf",1510],["Leyla",1390],["Nigar",1260],["Tural",1100],[me.name,xp*10]].map(x=>[x[0],Math.round(x[1]*rf)]).sort((a,b)=>b[1]-a[1]);
+ const pd=[1,0,2].map(i=>`<div class="pdm" style="--h:${[150,110,80][i]}px">${av(L[i][0],46)}<b>${esc(L[i][0].split(" ")[0])}</b><span>${["🥇","🥈","🥉"][i]} ${L[i][1]}</span></div>`).join("");
+ return `<h2 class="hi">Liderlər cədvəli</h2><div style="display:flex;gap:8px">${f.map(x=>`<button class="${rf==x[1]?"":"gh"}" style="margin:0" onclick="rf=${x[1]};view()">${x[0]}</button>`).join("")}</div><div class="pod">${pd}</div><div class="sec">${L.slice(3).map((p,i)=>`<div class="row"><span class="rn">${i+4}</span>${av(p[0],36)}<div class="g"><b>${esc(p[0])}</b></div><b>${p[1]}</b></div>`).join("")}</div>`}
+function brk(){const R=[["Aysel","Tural","Elvin","Leyla","Rauf","Nigar","Ali","Gülnar"],["Aysel","Elvin","Rauf","Ali"],["Aysel","Rauf"],["Aysel"]];return `<div class="sec" style="margin-top:20px;overflow-x:auto"><h3>Turnir: Payız kuboku</h3><div class="br">${R.map(c=>`<div>${c.map(n=>`<span class="bn">${n}</span>`).join("")}</div>`).join("")}</div><p><button onclick="toast('Turnir qeydiyyatı tezliklə açılır')">Turnirə yaz</button></p></div>`}
+function prof(n){const b=BOTS.find(x=>x[0]==n),s=hue(n)%7+3;return `<div class="ban" style="background:linear-gradient(120deg,hsl(${hue(n)} 70% 45%),hsl(${hue(n)+60} 70% 35%))"></div><div class="sec" style="margin-top:-24px;position:relative"><div style="display:flex;gap:14px;align-items:center">${av(n,72)}<div><h2 style="font-size:20px">${n}</h2><span class="mu">${b[1]}, ${b[2]}</span></div></div><p>${["🏅 İlk qələbə","🔥 7 günlük seriya","🧠 Yaddaş ustası"].map(x=>`<span class="badge">${x}</span>`).join(" ")}</p><div style="display:flex;gap:28px;margin:10px 0">${[["Oyun",s*13],["Qələbə",s*8],["Faiz",55+s*3+"%"]].map(x=>`<div><h3>${x[1]}</h3><span class="mu">${x[0]}</span></div>`).join("")}</div>${friends.includes(n)?`<button onclick="cur='dm:${n}';chats[cur]=chats[cur]||[];view()">Mesaj yaz</button>`:`<button onclick="addF('${n}');toast('Dostluq göndərildi')">Dostluq at</button>`}</div>`}
+render();
+</script></body></html>
